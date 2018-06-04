@@ -24,6 +24,8 @@
     <category>Utility</category>
     <category>TextEditor</category>
   </categories>
+  <icon type="remote" height="128" width="128">https://raw.githubusercontent.com/flathub/com.sublimetext.three/master/com.sublimetext.three-128.png</icon>
+  <icon type="remote" height="64" width="64">https://raw.githubusercontent.com/flathub/com.sublimetext.three/master/com.sublimetext.three-64.png</icon>
   <releases>
     <release date="2018-05-14" version="3.1.1">
       <description>
