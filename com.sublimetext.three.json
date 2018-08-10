@@ -1,11 +1,11 @@
 {
     "app-id": "com.sublimetext.three",
     "runtime": "org.freedesktop.Sdk",
-    "runtime-version": "unstable",
+    "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
     "base": "io.atom.electron.BaseApp",
-    "base-version": "stable",
-    "branch": "stable",
+    "base-version": "18.08",
+    "branch": "18.08",
     "command": "sublime",
     "separate-locales": false,
     "finish-args": [
