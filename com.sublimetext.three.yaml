@@ -4,12 +4,12 @@ branch: stable
 command: sublime
 
 runtime: org.freedesktop.Sdk
-runtime-version: "1.6"
+runtime-version: "18.08"
 sdk: org.freedesktop.Sdk
 
 # This is a convenient way to package GTK2 and friends into the app
 base: io.atom.electron.BaseApp
-base-version: stable
+base-version: "18.08"
 
 separate-locales: false
 finish-args:
@@ -21,7 +21,7 @@ finish-args:
 
 add-extensions:
   com.sublimetext.three.DevUtils:
-    version: "1.6"
+    version: "18.08"
     directory: utils
     subdirectories: false
     add-ld-path: lib
