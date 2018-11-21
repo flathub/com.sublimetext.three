@@ -58,6 +58,7 @@
                         "fi",
                         "export PATH=/app/utils/bin:$PATH",
                         "export PYTHONPATH=/app/utils/lib/python3.5/site-packages:$PYTHONPATH",
+                        "export LC_NUMERIC=C",
                         "exec /app/extra/bin/subl $@"
                     ]
                 },
