@@ -27,6 +27,102 @@
   <icon type="remote" height="128" width="128">https://raw.githubusercontent.com/flathub/com.sublimetext.three/master/com.sublimetext.three-128.png</icon>
   <icon type="remote" height="64" width="64">https://raw.githubusercontent.com/flathub/com.sublimetext.three/master/com.sublimetext.three-64.png</icon>
   <releases>
+    <release date="2019-03-13" version="3.2">
+      <description>
+        <p>3.2 (BUILD 3200)</p>
+        <p>NEW: Git Integration</p>
+        <ul>
+          <li>Files and folders in the sidebar will now display badges to indicate Git status</li>
+          <li>Ignored files and folders are visually de-emphasized</li>
+          <li>The current Git branch and number of modifications is displayed in the status bar</li>
+          <li>Commands have been added to open a repository, see file or folder history, or blame a file in Sublime Merge</li>
+          <li>Themes may customize the display of sidebar badges and status bar information</li>
+          <li>The setting show_git_status allows disabling Git integration</li>
+          <li>All file reads are done through a custom, high-performance Git library written for Sublime Merge</li>
+        </ul>
+        <p>NEW: Incremental Diff</p>
+        <ul>
+          <li>All changes to a document are now represented by dedicated markers in the gutter</li>
+          <li>Diff markers show added, modified and deleted lines</li>
+          <li>The setting mini_diff controls incremental diff behavior</li>
+          <li>In coordination with the new Git functionality, diffs can be calculated against HEAD or the index</li>
+          <li>The git_diff_target setting controls base document source</li>
+          <li>API methods View.set_reference_document() and View.reset_reference_document() allow controlling the diff</li>
+          <li>The following diff-related commands were added:
+            <ul>
+              <li>Next Modification</li>
+              <li>Previous Modification</li>
+              <li>Revert Modification</li>
+            </ul>
+          </li>
+          <li>Full inline diffs of each change can be displayed via the right-click context menu, or keyboard shortcuts</li>
+          <li>Inline diff presentation can be changed by customizing a color scheme</li>
+        </ul>
+        <p>Editor Control</p>
+        <ul>
+          <li>Added block_caret setting</li>
+          <li>Improve positioning and sizing of gutter icons in some situations</li>
+          <li>Fixed draw_minimap_border setting not working</li>
+          <li>Improved input method (IM) support - fcitx, ibus, etc</li>
+          <li>Fixed a crash when using GTK_IM_MODULE=xim</li>
+          <li>Tweaked behavior of up/down when on the first and last lines of a file to better match platform conventions</li>
+        </ul>
+        <p>Themes/UI</p>
+        <ul>
+          <li>Enhanced the .sublime-theme format:
+            <ul>
+              <li>Added variables support and associated revised JSON format with variables key</li>
+              <li>Added extends keyword to have one theme derive from another</li>
+              <li>Colors may be specified via CSS syntax</li>
+            </ul>
+          </li>
+          <li>Improved performance with large numbers of rules in a .sublime-theme</li>
+          <li>Moved to GTK3</li>
+          <li>Various high DPI fixes</li>
+        </ul>
+        <p>Text Rendering</p>
+        <ul>
+          <li>Support for Unicode 11.0</li>
+          <li>Improved rendering of combining characters</li>
+          <li>Fixed a caret positioning bug when non-trivial graphemes are present</li>
+          <li>Color glyphs are now drawn properly on light backgrounds</li>
+        </ul>
+        <p>Color Schemes</p>
+        <ul>
+          <li>Added block_caret key to use in conjunction with block carets</li>
+          <li>caret values now respect alpha as expected, rather than pre-blending against the background color</li>
+          <li>Added the foreground_adjust property to rules with a background. Accepts CSS color mod adjusters to manipulate the saturation, lightness or opacity of the foreground color.</li>
+        </ul>
+        <p>Syntax Highlighting</p>
+        <ul>
+          <li>Many syntax highlighting improvements, including significant improvements to:
+            <ul>
+              <li>Clojure, with thanks to Nelo Mitranim</li>
+              <li>D</li>
+              <li>Go, with thanks to Nelo Mitranim</li>
+              <li>Lua, with thanks to Thomas Smith</li>
+            </ul>
+          </li>
+          <li>Fixed a crash that could occur when nesting embed patterns in .sublime-syntax files</li>
+          <li>Syntax Tests: Allow syntax test files to have a UTF-8 BOM</li>
+        </ul>
+        <p>API</p>
+        <ul>
+          <li>Added View.set_reference_document() and View.reset_reference_document() to control diff generation</li>
+          <li>Phantoms are now drawn correctly in conjunction with draw_centered</li>
+          <li>Various minor improvements related to plugin module loading and unloading</li>
+          <li>Added support for hwb() colors to minihtml</li>
+          <li>Added a custom min-contrast() adjuster for the CSS color mod function in minihtml</li>
+        </ul>
+        <p>Miscellaneous</p>
+        <ul>
+          <li>Fixed a Goto Symbol in Project performance regression</li>
+          <li>F21..F24 keys can now be bound</li>
+          <li>Assorted minor fixes and stability improvements</li>
+          <li>Improved behavior of --wait command line argument when Sublime Text isn't currently running</li>
+        </ul>
+      </description>
+    </release>
     <release date="2018-05-14" version="3.1.1">
       <description>
         <p>3.1.1 (BUILD 3176)</p>

@@ -7,10 +7,6 @@ runtime: org.freedesktop.Sdk
 runtime-version: "18.08"
 sdk: org.freedesktop.Sdk
 
-# This is a convenient way to package GTK2 and friends into the app
-base: io.atom.electron.BaseApp
-base-version: "18.08"
-
 separate-locales: false
 finish-args:
   - --share=ipc
@@ -37,8 +33,8 @@ modules:
         commands:
           - ar x sublime.deb
           - rm -f sublime.deb
-          - tar xf data.tar.lzma
-          - rm -f control.tar.gz data.tar.lzma debian-binary
+          - tar xf data.tar.xz
+          - rm -f control.tar.xz data.tar.xz debian-binary
           - mv usr/* .
           - rmdir usr
           - mkdir -p export/share/applications
@@ -62,15 +58,15 @@ modules:
       - type: extra-data
         only-arches: ["x86_64"]
         filename: sublime.deb
-        url: https://download.sublimetext.com/files/sublime-text_build-3176_amd64.deb
-        sha256: 191acaacb6b0abb773203d5e80f5442db0453d411d426fd514964dea1549cab7
-        size: 8493978
+        url: https://download.sublimetext.com/files/sublime-text_build-3200_amd64.deb
+        sha256: 337c9b6ebad4fb3bfa30d73d6b0695f73ceeb3e2c690055039865f8490e83e30
+        size: 9822772
       - type: extra-data
         only-arches: ["i386"]
         filename: sublime.deb
-        url: https://download.sublimetext.com/files/sublime-text_build-3176_i386.deb
-        sha256: 9f58b9b927f7da240b382521972f5f2909ecac6889d3250821df9104a7b00261
-        size: 8591340
+        url: https://download.sublimetext.com/files/sublime-text_build-3200_i386.deb
+        sha256: 0904adaaca95294659afab6aca7026eeda5b6f67e71b36cba6916d24382c87d5
+        size: 9984304
       - type: extra-data
         filename: Package Control.sublime-package
         url: http://packagecontrol.io/Package%20Control.sublime-package
