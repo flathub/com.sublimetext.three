@@ -58,15 +58,15 @@ modules:
       - type: extra-data
         only-arches: ["x86_64"]
         filename: sublime.deb
-        url: https://download.sublimetext.com/files/sublime-text_build-3200_amd64.deb
-        sha256: 337c9b6ebad4fb3bfa30d73d6b0695f73ceeb3e2c690055039865f8490e83e30
-        size: 9822772
+        url: https://download.sublimetext.com/files/sublime-text_build-3207_amd64.deb
+        sha256: 93a0228a63cee7b182f6e6350e7ba9a50e0fa6be1f0d7f48b1ee4a5ca947c5ce
+        size: 9845576
       - type: extra-data
         only-arches: ["i386"]
         filename: sublime.deb
-        url: https://download.sublimetext.com/files/sublime-text_build-3200_i386.deb
-        sha256: 0904adaaca95294659afab6aca7026eeda5b6f67e71b36cba6916d24382c87d5
-        size: 9984304
+        url: https://download.sublimetext.com/files/sublime-text_build-3207_i386.deb
+        sha256: e40d77372bd08d68a1bf60db115886d72e4b616ecee3493be6b4a0d83fdd7db4
+        size: 9993484
       - type: extra-data
         filename: Package Control.sublime-package
         url: http://packagecontrol.io/Package%20Control.sublime-package
