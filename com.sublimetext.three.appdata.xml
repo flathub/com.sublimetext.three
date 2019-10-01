@@ -27,6 +27,7 @@
   <icon type="remote" height="128" width="128">https://raw.githubusercontent.com/flathub/com.sublimetext.three/master/com.sublimetext.three-128.png</icon>
   <icon type="remote" height="64" width="64">https://raw.githubusercontent.com/flathub/com.sublimetext.three/master/com.sublimetext.three-64.png</icon>
   <releases>
+    <release date="2019-10-01" version="3.2.2" />
     <release date="2019-04-06" version="3.2.1" />
     <release date="2019-03-13" version="3.2">
       <description>
