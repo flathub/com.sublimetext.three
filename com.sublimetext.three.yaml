@@ -17,6 +17,7 @@ finish-args:
   - --talk-name=org.gnome.SettingsDaemon
   - --filesystem=host
   - --env=PATH=/app/utils/bin:/app/sublime_merge/bin:/app/bin:/usr/bin
+  - --env=PYTHONPATH=/app/utils/lib/python3.7/site-packages
 
 add-extensions:
   com.sublimetext.three.SublimeMerge:
