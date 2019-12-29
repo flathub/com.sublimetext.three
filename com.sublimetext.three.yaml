@@ -62,6 +62,7 @@ modules:
           - PCFILE="Package Control.sublime-package"
           - PCLOCATION="$HOME/.var/app/com.sublimetext.three/config/sublime-text-3/Installed Packages"
           - if ! test -f "$PCLOCATION/$PCFILE"; then
+                mkdir -p "$PCLOCATION"
           -     cp "/app/extra/$PCFILE" "$PCLOCATION"
           - fi
           - export LC_NUMERIC=C
