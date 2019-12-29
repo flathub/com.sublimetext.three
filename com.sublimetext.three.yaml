@@ -19,6 +19,10 @@ finish-args:
   - --env=PATH=/app/utils/bin:/app/sublime_merge/bin:/app/bin:/usr/bin
 
 add-extensions:
+  com.sublimetext.three.SublimeMerge:
+    directory: sublime_merge
+    add-ld-path: lib
+
   com.sublimetext.three.DevUtils:
     version: "19.08"
     directory: utils
@@ -48,6 +52,7 @@ modules:
             export/share/applications/${FLATPAK_ID}.desktop
           # Install the app
           - mv deb-package/opt/sublime_text ./
+          - ln -sr /app/sublime_merge/extra/sublime_merge ./sublime_merge
           # Cleanup
           - rm -rf deb-package sublime.deb
       - type: script
@@ -92,5 +97,6 @@ modules:
       - install -Dm644 com.sublimetext.three-64.png /app/share/icons/hicolor/64x64/apps/com.sublimetext.three.png
       - install -Dm644 com.sublimetext.three-128.png /app/share/icons/hicolor/128x128/apps/com.sublimetext.three.png
     post-install:
-      # This creates the mount point for the DevUtils extension.
+      # This creates the mount point for the extensions.
       - mkdir -p /app/utils
+      - mkdir -p /app/sublime_merge
