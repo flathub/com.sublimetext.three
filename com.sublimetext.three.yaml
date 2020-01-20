@@ -57,7 +57,7 @@ modules:
           # Cleanup
           - rm -rf deb-package sublime.deb
       - type: script
-        dest-filename: sublime.sh
+        dest-filename: subl
         commands:
           - PCFILE="Package Control.sublime-package"
           - PCLOCATION="$HOME/.var/app/com.sublimetext.three/config/sublime-text-3/Installed Packages"
@@ -94,7 +94,7 @@ modules:
       - mkdir -p /app/bin
       - mkdir -p /app/lib
       - install apply_extra /app/bin
-      - install sublime.sh /app/bin/subl
+      - install subl /app/bin/subl
       - install -Dm644 com.sublimetext.three.appdata.xml /app/share/appdata/com.sublimetext.three.appdata.xml
       - install -Dm644 com.sublimetext.three-64.png /app/share/icons/hicolor/64x64/apps/com.sublimetext.three.png
       - install -Dm644 com.sublimetext.three-128.png /app/share/icons/hicolor/128x128/apps/com.sublimetext.three.png
