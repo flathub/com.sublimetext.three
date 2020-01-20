@@ -61,10 +61,11 @@ modules:
         commands:
           - PCFILE="Package Control.sublime-package"
           - PCLOCATION="$HOME/.var/app/com.sublimetext.three/config/sublime-text-3/Installed Packages"
-          - if ! test -f "$PCLOCATION/$PCFILE"; then
+          - |
+            if ! test -f "$PCLOCATION/$PCFILE"; then
                 mkdir -p "$PCLOCATION"
-          -     cp "/app/extra/$PCFILE" "$PCLOCATION"
-          - fi
+                cp "/app/extra/$PCFILE" "$PCLOCATION"
+            fi
           - export LC_NUMERIC=C
           - exec /app/extra/sublime_text/sublime_text --fwdargv0 "$0" "$@"
       - type: extra-data
