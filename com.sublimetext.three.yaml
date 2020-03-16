@@ -1,10 +1,9 @@
 ---
 app-id: com.sublimetext.three
-branch: stable
-command: sublime
+command: subl
 
 runtime: org.freedesktop.Sdk
-runtime-version: "18.08"
+runtime-version: "19.08"
 sdk: org.freedesktop.Sdk
 
 separate-locales: false
@@ -17,10 +16,16 @@ finish-args:
   - --socket=wayland
   - --talk-name=org.gnome.SettingsDaemon
   - --filesystem=host
+  - --env=PATH=/app/utils/bin:/app/sublime_merge/bin:/app/bin:/usr/bin
+  - --env=PYTHONPATH=/app/utils/lib/python3.7/site-packages
 
 add-extensions:
+  com.sublimetext.three.SublimeMerge:
+    directory: sublime_merge
+    add-ld-path: lib
+
   com.sublimetext.three.DevUtils:
-    version: "18.08"
+    version: "19.08"
     directory: utils
     subdirectories: false
     add-ld-path: lib
@@ -34,30 +39,35 @@ modules:
       - type: script
         dest-filename: apply_extra
         commands:
-          - ar x sublime.deb
-          - rm -f sublime.deb
-          - tar xf data.tar.xz
-          - rm -f control.tar.xz data.tar.xz debian-binary
-          - mv usr/* .
-          - rmdir usr
-          - mkdir -p export/share/applications
-          - sed s/Icon=sublime-text/Icon=com.sublimetext.three/ share/applications/sublime_text.desktop > export/share/applications/com.sublimetext.three.desktop
-          - sed -i 's:Exec=/opt/sublime_text/sublime_text:Exec=sublime:' export/share/applications/com.sublimetext.three.desktop
-          - mkdir -p export/share/icons/hicolor/256x256/apps
-          - cp share/icons/hicolor/256x256/apps/sublime-text.png export/share/icons/hicolor/256x256/apps/com.sublimetext.three.png
-          - sed -i 's:/opt/sublime_text/sublime_text:/app/extra/opt/sublime_text/sublime_text:' /app/extra/bin/subl
+          - FLATPAK_ID=com.sublimetext.three
+          # Extract upstream package
+          - mkdir -p deb-package export/share
+          - ar p sublime.deb data.tar.xz | tar -xJf - -C deb-package
+          # Install desktop entry and icons
+          - mv deb-package/usr/share/{applications,icons} export/share/
+          - rename sublime_text ${FLATPAK_ID} export/share/applications/*.desktop
+          - rename sublime-text ${FLATPAK_ID} export/share/icons/hicolor/*/apps/*
+          - desktop-file-edit
+            --set-key=Exec --set-value=subl
+            --set-key=Icon --set-value=${FLATPAK_ID}
+            export/share/applications/${FLATPAK_ID}.desktop
+          # Install the app
+          - mv deb-package/opt/sublime_text ./
+          - ln -sr /app/sublime_merge/extra/sublime_merge ./sublime_merge
+          # Cleanup
+          - rm -rf deb-package sublime.deb
       - type: script
-        dest-filename: sublime.sh
+        dest-filename: subl
         commands:
           - PCFILE="Package Control.sublime-package"
           - PCLOCATION="$HOME/.var/app/com.sublimetext.three/config/sublime-text-3/Installed Packages"
-          - if ! test -f "$PCLOCATION/$PCFILE"; then
-          -     cp "/app/extra/$PCFILE" "$PCLOCATION"
-          - fi
-          - export PATH=/app/utils/bin:$PATH
-          - export PYTHONPATH=/app/utils/lib/python3.5/site-packages:$PYTHONPATH
+          - |
+            if ! test -f "$PCLOCATION/$PCFILE"; then
+                mkdir -p "$PCLOCATION"
+                cp "/app/extra/$PCFILE" "$PCLOCATION"
+            fi
           - export LC_NUMERIC=C
-          - exec /app/extra/bin/subl "$@"
+          - exec /app/extra/sublime_text/sublime_text --fwdargv0 "$0" "$@"
       - type: extra-data
         only-arches: ["x86_64"]
         filename: sublime.deb
@@ -85,10 +95,11 @@ modules:
       - mkdir -p /app/bin
       - mkdir -p /app/lib
       - install apply_extra /app/bin
-      - install sublime.sh /app/bin/sublime
+      - install subl /app/bin/subl
       - install -Dm644 com.sublimetext.three.appdata.xml /app/share/appdata/com.sublimetext.three.appdata.xml
       - install -Dm644 com.sublimetext.three-64.png /app/share/icons/hicolor/64x64/apps/com.sublimetext.three.png
       - install -Dm644 com.sublimetext.three-128.png /app/share/icons/hicolor/128x128/apps/com.sublimetext.three.png
     post-install:
-      # This creates the mount point for the DevUtils extension.
+      # This creates the mount point for the extensions.
       - mkdir -p /app/utils
+      - mkdir -p /app/sublime_merge
