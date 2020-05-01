@@ -1,0 +1,25 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sublime Text
+GenericName=Text Editor
+Comment=Sophisticated text editor for code, markup and prose
+Exec=/usr/bin/flatpak run --branch=master --arch=x86_64 --command=subl --file-forwarding com.sublimetext.three @@ %F @@
+Terminal=false
+MimeType=text/plain;
+Icon=com.sublimetext.three
+Categories=TextEditor;Development;
+StartupNotify=true
+Actions=Window;Document;
+X-Desktop-File-Install-Version=0.24
+X-Flatpak=com.sublimetext.three
+
+[Desktop Action Window]
+Name=New Window
+Exec=/usr/bin/flatpak run --branch=master --arch=x86_64 --command=/opt/sublime_text/sublime_text com.sublimetext.three -n
+OnlyShowIn=Unity;
+
+[Desktop Action Document]
+Name=New File
+Exec=/usr/bin/flatpak run --branch=master --arch=x86_64 --command=/opt/sublime_text/sublime_text com.sublimetext.three --command new_file
+OnlyShowIn=Unity;
