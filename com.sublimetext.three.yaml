@@ -48,7 +48,7 @@ modules:
           - rename sublime_text ${FLATPAK_ID} export/share/applications/*.desktop
           - rename sublime-text ${FLATPAK_ID} export/share/icons/hicolor/*/apps/*
           - desktop-file-edit
-            --set-key=Exec --set-value=subl
+            --set-key=Exec --set-value='subl %F'
             --set-key=Icon --set-value=${FLATPAK_ID}
             export/share/applications/${FLATPAK_ID}.desktop
           # Install the app
@@ -86,6 +86,8 @@ modules:
         sha256: 6f4c264a24d933ce70df5dedcf1dcaeeebe013ee18cced0ef93d5f746d80ef60
         size: 286331
       - type: file
+        path: com.sublimetext.three.desktop
+      - type: file
         path: com.sublimetext.three.appdata.xml
       - type: file
         path: com.sublimetext.three-64.png
@@ -96,6 +98,7 @@ modules:
       - mkdir -p /app/lib
       - install apply_extra /app/bin
       - install subl /app/bin/subl
+      - install -Dm644 com.sublimetext.three.desktop /app/share/applications/com.sublimetext.three.desktop
       - install -Dm644 com.sublimetext.three.appdata.xml /app/share/appdata/com.sublimetext.three.appdata.xml
       - install -Dm644 com.sublimetext.three-64.png /app/share/icons/hicolor/64x64/apps/com.sublimetext.three.png
       - install -Dm644 com.sublimetext.three-128.png /app/share/icons/hicolor/128x128/apps/com.sublimetext.three.png
