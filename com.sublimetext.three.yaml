@@ -48,7 +48,7 @@ modules:
           - rename sublime_text ${FLATPAK_ID} export/share/applications/*.desktop
           - rename sublime-text ${FLATPAK_ID} export/share/icons/hicolor/*/apps/*
           - desktop-file-edit
-            --set-key=Exec --set-value=subl
+            --set-key=Exec --set-value='subl %F'
             --set-key=Icon --set-value=${FLATPAK_ID}
             export/share/applications/${FLATPAK_ID}.desktop
           # Install the app
