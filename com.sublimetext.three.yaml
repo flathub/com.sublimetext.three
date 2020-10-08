@@ -2,7 +2,7 @@ app-id: com.sublimetext.three
 command: subl
 
 runtime: org.freedesktop.Sdk
-runtime-version: '19.08'
+runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 
 separate-locales: false
@@ -16,7 +16,7 @@ finish-args:
   - --talk-name=org.gnome.SettingsDaemon
   - --filesystem=host
   - --env=PATH=/app/utils/bin:/app/sublime_merge/bin:/app/bin:/usr/bin
-  - --env=PYTHONPATH=/app/utils/lib/python3.7/site-packages
+  - --env=PYTHONPATH=/app/utils/lib/python3.9/site-packages
 
 add-extensions:
   com.sublimetext.three.SublimeMerge:
@@ -24,7 +24,7 @@ add-extensions:
     add-ld-path: lib
 
   com.sublimetext.three.DevUtils:
-    version: '19.08'
+    version: '21.08'
     directory: utils
     subdirectories: false
     add-ld-path: lib
