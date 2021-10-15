@@ -1,9 +1,8 @@
----
 app-id: com.sublimetext.three
 command: subl
 
 runtime: org.freedesktop.Sdk
-runtime-version: "19.08"
+runtime-version: '19.08'
 sdk: org.freedesktop.Sdk
 
 separate-locales: false
@@ -25,7 +24,7 @@ add-extensions:
     add-ld-path: lib
 
   com.sublimetext.three.DevUtils:
-    version: "19.08"
+    version: '19.08'
     directory: utils
     subdirectories: false
     add-ld-path: lib
@@ -47,10 +46,8 @@ modules:
           - mv deb-package/usr/share/{applications,icons} export/share/
           - rename sublime_text ${FLATPAK_ID} export/share/applications/*.desktop
           - rename sublime-text ${FLATPAK_ID} export/share/icons/hicolor/*/apps/*
-          - desktop-file-edit
-            --set-key=Exec --set-value='subl %F'
-            --set-key=Icon --set-value=${FLATPAK_ID}
-            export/share/applications/${FLATPAK_ID}.desktop
+          - desktop-file-edit --set-key=Exec --set-value='subl %F' --set-key=Icon
+            --set-value=${FLATPAK_ID} export/share/applications/${FLATPAK_ID}.desktop
           # Install the app
           - mv deb-package/opt/sublime_text ./
           - ln -sr /app/sublime_merge/extra/sublime_merge ./sublime_merge
@@ -60,7 +57,8 @@ modules:
         dest-filename: subl
         commands:
           - PCFILE="Package Control.sublime-package"
-          - PCLOCATION="$HOME/.var/app/com.sublimetext.three/config/sublime-text-3/Installed Packages"
+          - PCLOCATION="$HOME/.var/app/com.sublimetext.three/config/sublime-text-3/Installed
+            Packages"
           - |
             if ! test -f "$PCLOCATION/$PCFILE"; then
                 mkdir -p "$PCLOCATION"
@@ -69,13 +67,13 @@ modules:
           - export LC_NUMERIC=C
           - exec /app/extra/sublime_text/sublime_text --fwdargv0 "$0" "$@"
       - type: extra-data
-        only-arches: ["x86_64"]
+        only-arches: [x86_64]
         filename: sublime.deb
         url: https://download.sublimetext.com/files/sublime-text_build-3211_amd64.deb
         sha256: 8b2c6dc1178b1f0aa861e76b21719747c1587482c014e12db10ca4424b539c34
         size: 9835156
       - type: extra-data
-        only-arches: ["i386"]
+        only-arches: [i386]
         filename: sublime.deb
         url: https://download.sublimetext.com/files/sublime-text_build-3211_i386.deb
         sha256: 8d94aa6755eb09400a5936865a2a948ef8c89c7e93f6346e8da32e06f6e1cd97
@@ -83,8 +81,8 @@ modules:
       - type: extra-data
         filename: Package Control.sublime-package
         url: http://packagecontrol.io/Package%20Control.sublime-package
-        sha256: 817937144c34c84c88cd43b85318b2656f9c3fac02f8f72cbc18360b2c26d139
-        size: 471460
+        sha256: b24623dd13442630f6b9b68026119a4566c6fd41b30aea12bb6fa1f050357b88
+        size: 11483
       - type: file
         path: com.sublimetext.three.desktop
       - type: file
