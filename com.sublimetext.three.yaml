@@ -81,8 +81,8 @@ modules:
       - type: extra-data
         filename: Package Control.sublime-package
         url: http://packagecontrol.io/Package%20Control.sublime-package
-        sha256: 453bfa37f26286adee731ee5c90b27bf8fbb19cb70d7cfac4237114709efb2ce
-        size: 11491
+        sha256: 817937144c34c84c88cd43b85318b2656f9c3fac02f8f72cbc18360b2c26d139
+        size: 471460
       - type: file
         path: com.sublimetext.three.desktop
       - type: file
